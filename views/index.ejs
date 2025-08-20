@@ -6,6 +6,13 @@
     <title>Hardine Club</title>
 </head>
 <body>
-    <h1>Welcome to Hardine Club</h1>
+    <% if (locals.user) { %>
+        <h1>Welcome Back <%= user.firstname %> <%= user.lastname %>!</h1>
+        <a href="/logout"><button>LOGOUT</button></a>     
+    <% } else { %>
+        <h1>Welcome to Hardine Club</h1>
+        <a href="/login"><button>LOGIN</button></a>
+        <a href="/register"><button>REGISTER</button></a>
+    <% } %>
 </body>
 </html>
