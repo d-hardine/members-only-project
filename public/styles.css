@@ -1,0 +1,85 @@
+/* https://coolors.co/palette/edede9-d6ccc2-f5ebe0-e3d5ca-d5bdaf */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #EDEDE9;
+    color: rgb(63, 63, 63);
+}
+
+header {
+    background-color: #D6CCC2;
+    padding: 10px 10vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-text {
+    font-size: 40px;
+    font-family: caveat;
+}
+
+main {
+    padding: 50px 10vw;
+}
+
+.header-right-container {
+    display: flex;
+    gap: 10px;
+}
+
+.message-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.message-card {
+    display: flex;
+    gap: 20px;
+    min-height: 150px;
+}
+
+.info-container {
+    background-color: #F5EBE0;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-icon {
+    background-color: brown;
+    width: 75px;
+    height: 75px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 75px;       /* The same as your div height */
+}
+
+.message-content-container {
+    background-color: white;
+    width: 100%;
+}
+
+.message-content-title-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #E3D5CA;
+    padding: 5px 20px;
+}
+
+.message-content {
+    padding: 5px 20px;
+}

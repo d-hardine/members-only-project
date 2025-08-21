@@ -8,8 +8,10 @@ const pool = require('./db/pool')
 const pgSession = require('connect-pg-simple')(session)
 
 const app = express()
-app.set('views', path.join(__dirname, 'views'))
+//app.set('views', path.join(__dirname, 'views')) might be unnecessary
 app.set('view engine', 'ejs')
+const assetsPath = path.join(__dirname, "public"); //needed to connect css
+app.use(express.static(assetsPath)); //needed to connect css
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 

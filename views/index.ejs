@@ -3,23 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
     <title>Hardine Club</title>
 </head>
 <body>
-    <% if (locals.user) { %>
-        <h1>Hello <%= user.firstname %> <%= user.lastname %>!</h1>
-        <a href="/logout"><button>LOGOUT</button></a>
-        <a href="/new-message"><button>NEW MESSAGE</button></a>
-    <% } else { %>
-        <h1>Welcome to Hardine Club</h1>
-        <a href="/login"><button>LOGIN</button></a>
-        <a href="/register"><button>REGISTER</button></a>
-    <% } %>
-    <% locals.messages.forEach(message => { %>
-        <div><%= message.username %></div>
-        <div><%= message.message_title %></div>
-        <div><%= message.message_content %></div>
-        <div><%= message.timestamp %></div>
-    <% }) %>
+    <header>
+        <div class="logo-text">Hardine Club</div>
+        <div class="header-right-container">
+            <% if (locals.user) { %>
+                <div><b><%= user.username %></b></div>
+                <a href="/logout"><button>LOGOUT</button></a>
+            <% } else {%>
+                <a href="/login"><button>LOGIN</button></a>
+                <a href="/register"><button>REGISTER</button></a>
+            <% } %>
+        </div>
+    </header>
+    <main>
+        <% if (locals.user) { %>
+            <h1>Hello, <%= user.firstname %> <%= user.lastname %>!</h1>
+            <a href="/new-message"><button>NEW MESSAGE</button></a>
+        <% } else { %>
+            <h1>Welcome to Hardine Club!</h1>
+        <% } %>
+        <div class="message-container">
+            <% locals.messages.forEach(message => { %>
+                <div class="message-card">
+                    <div class="info-container">
+                        <% if (locals.user) { %>
+                            <div class="user-icon">
+                                <div class="user-icon-text"><%= message.username.charAt(0).toUpperCase() %></div>
+                            </div>
+                            <div><b><%= message.username %></b></div>
+                            <% if (message.is_admin) { %>
+                                <div>Admin</div>
+                            <% } else { %>
+                                <div>Member</div>
+                            <% } %>
+                        <% } else { %>
+                            <div class="user-icon">
+                                <div class="user-icon-text">?</div>
+                            </div>
+                            <div><b>Club Member</b></div>
+                            <div>???</div>
+                        <% } %>
+                    </div>
+                    <div class="message-content-container">
+                        <div class="message-content-title-container">
+                            <div><%= message.message_title %></div>
+                            <% if (locals.user) { %>
+                                <div><%= message.timestamp %></div>
+                            <% } else { %>
+                                <div>Join to see more message info</div>
+                            <% } %>
+                        </div>
+                        <div class="message-content"><%= message.message_content %></div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </main>
 </body>
 </html>
