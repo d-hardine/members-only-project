@@ -15,10 +15,10 @@
         <form action="/new-message" method="POST" class="form-container">
             <h1>Create New Message</h1>
             <label for="message-title">Message Title: </label>
-            <input id="message-title" name="messageTitle" type="text" />
+            <input id="message-title" name="messageTitle" type="text" required/>
             <label for="message-content">Message: </label>
-            <textarea id="message-content" name="messageContent" cols="30" rows="4"></textarea>
-            <button type="submit">CREATE</button>
+            <textarea id="message-content" name="messageContent" cols="30" rows="4" required></textarea>
+            <button type="submit">NEW MESSAGE</button>
         </form>
     </main>
     <%- include("partials/footer.ejs") %>

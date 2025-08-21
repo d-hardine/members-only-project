@@ -115,6 +115,16 @@ form.form-container {
     margin: auto;
 }
 
+ul {
+    margin: auto;
+    color: red;
+    list-style: none;
+}
+
+ul > li {
+    text-align: center;
+}
+
 footer {
     background-color: #D5BDAF;
     text-align: center;
