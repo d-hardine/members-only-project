@@ -9,7 +9,10 @@
 
 body {
     background-color: #EDEDE9;
-    color: rgb(63, 63, 63);
+    color: #3F3F3F;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
 header {
@@ -20,9 +23,24 @@ header {
     align-items: center;
 }
 
-.logo-text {
+button {
+    background-color: #463f3a;
+    border: none;
+    min-height: 30px;
+    padding: 0 20px;
+    color: white;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: #8a817c;
+}
+
+.logo-text > a {
     font-size: 40px;
     font-family: caveat;
+    text-decoration: none;
+    color: inherit;
 }
 
 main {
@@ -80,6 +98,30 @@ main {
     padding: 5px 20px;
 }
 
+.timestamp-delete-container {
+    display: flex;
+    gap: 20px;
+}
+
 .message-content {
     padding: 5px 20px;
+}
+
+form.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 400px;
+    margin: auto;
+}
+
+footer {
+    background-color: #D5BDAF;
+    text-align: center;
+}
+
+.contact-footer {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
 }

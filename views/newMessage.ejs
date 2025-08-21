@@ -3,16 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
     <title>New Message</title>
 </head>
 <body>
-    <h1>Create New Message</h1>
-    <form action="/new-message" method="POST">
-        <label for="message-title">Message Title: </label>
-        <input id="message-title" name="messageTitle" type="text" />
-        <label for="message-content">Message: </label>
-        <textarea id="message-content" name="messageContent" cols="30" rows="4"></textarea>
-        <button type="submit">CREATE</button>
-    </form>
+    <%- include("partials/header.ejs") %>
+    <main>
+        <form action="/new-message" method="POST" class="form-container">
+            <h1>Create New Message</h1>
+            <label for="message-title">Message Title: </label>
+            <input id="message-title" name="messageTitle" type="text" />
+            <label for="message-content">Message: </label>
+            <textarea id="message-content" name="messageContent" cols="30" rows="4"></textarea>
+            <button type="submit">CREATE</button>
+        </form>
+    </main>
+    <%- include("partials/footer.ejs") %>
 </body>
 </html>

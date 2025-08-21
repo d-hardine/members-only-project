@@ -3,20 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Member</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Create a New Account</title>
 </head>
 <body>
-    <h1>REGISTER</h1>
-    <form action="/register" method="post">
-        <label for="firstname">First Name</label>
-        <input id="firstname" name="firstname" placeholder="Bruce" type="text" />
-        <label for="lastname">Last Name</label>
-        <input id="lastname" name="lastname" placeholder="Wayne" type="text" />
-        <label for="username">Username</label>
-        <input id="username" name="username" placeholder="bruce.wayne" type="text" />
-        <label for="password">Password</label>
-        <input id="password" name="password" type="password" />
-        <button type="submit">Register</button>
-    </form>
+    <%- include("partials/header.ejs") %>
+    <main>
+        <form action="/register" method="post" class="form-container">
+            <h1>Create a New Account</h1>
+            <label for="firstname">First Name</label>
+            <input id="firstname" name="firstname" placeholder="Bruce" type="text" />
+            <label for="lastname">Last Name</label>
+            <input id="lastname" name="lastname" placeholder="Wayne" type="text" />
+            <label for="username">Username</label>
+            <input id="username" name="username" placeholder="bruce.wayne" type="text" />
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" />
+            <button type="submit">Register</button>
+            <div>Already a member? Please <a href="/login">login</a>.</div>
+        </form>
+    </main>
+    <%- include("partials/footer.ejs") %>
 </body>
 </html>

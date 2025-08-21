@@ -10,24 +10,14 @@
     <title>Hardine Club</title>
 </head>
 <body>
-    <header>
-        <div class="logo-text">Hardine Club</div>
-        <div class="header-right-container">
-            <% if (locals.user) { %>
-                <div><b><%= user.username %></b></div>
-                <a href="/logout"><button>LOGOUT</button></a>
-            <% } else {%>
-                <a href="/login"><button>LOGIN</button></a>
-                <a href="/register"><button>REGISTER</button></a>
-            <% } %>
-        </div>
-    </header>
+    <%- include("partials/header.ejs") %>
     <main>
         <% if (locals.user) { %>
             <h1>Hello, <%= user.firstname %> <%= user.lastname %>!</h1>
             <a href="/new-message"><button>NEW MESSAGE</button></a>
         <% } else { %>
             <h1>Welcome to Hardine Club!</h1>
+            <p>Wanna post a message? Join the club <a href="/register">here!</a></p>
         <% } %>
         <div class="message-container">
             <% locals.messages.forEach(message => { %>
@@ -38,8 +28,8 @@
                                 <div class="user-icon-text"><%= message.username.charAt(0).toUpperCase() %></div>
                             </div>
                             <div><b><%= message.username %></b></div>
-                            <% if (message.is_admin) { %>
-                                <div>Admin</div>
+                            <% if (message.isadmin) { %>
+                                <div>Administrator</div>
                             <% } else { %>
                                 <div>Member</div>
                             <% } %>
@@ -54,17 +44,26 @@
                     <div class="message-content-container">
                         <div class="message-content-title-container">
                             <div><%= message.message_title %></div>
-                            <% if (locals.user) { %>
-                                <div><%= message.timestamp %></div>
-                            <% } else { %>
-                                <div>Join to see more message info</div>
-                            <% } %>
+                            <div class="timestamp-delete-container">
+                                <% if (locals.user) { %>
+                                    <div title=<%= message.timestamp %>><%= message.distancedTimeStamp %></div>
+                                    <% if (locals.isAdmin) { %>
+                                        <form action="/delete" method="post">
+                                            <input type="hidden" name="messageId" value=<%= message.id %>>
+                                            <button>delete</button>
+                                        </form>
+                                    <% } %>
+                                <% } else { %>
+                                    <div>Login to see more message info</div>
+                                <% } %>
+                            </div>
                         </div>
-                        <div class="message-content"><%= message.message_content %></div>
+                        <div class="message-content"><%= message.message_content %></div>    
                     </div>
                 </div>
             <% }) %>
         </div>
     </main>
+    <%- include("partials/footer.ejs") %>
 </body>
 </html>
