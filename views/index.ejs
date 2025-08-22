@@ -14,10 +14,12 @@
     <main>
         <% if (locals.user) { %>
             <h1>Hello, <%= user.firstname %> <%= user.lastname %>!</h1>
+            <br>
             <a href="/new-message"><button>NEW MESSAGE</button></a>
         <% } else { %>
             <h1>Welcome to Hardine Club!</h1>
             <p>Wanna post a message? Join the club <a href="/register">here!</a></p>
+            <br>
         <% } %>
         <div class="message-container">
             <% locals.messages.forEach(message => { %>
@@ -47,11 +49,13 @@
                             <div class="timestamp-delete-container">
                                 <% if (locals.user) { %>
                                     <div title=<%= message.timestamp %>><%= message.distancedTimeStamp %></div>
-                                    <% if (locals.isAdmin) { %>
-                                        <form action="/delete" method="post">
-                                            <input type="hidden" name="messageId" value=<%= message.id %>>
-                                            <button>delete</button>
-                                        </form>
+                                    <% if (locals.user) { %>
+                                        <% if (user.isadmin) { %>
+                                            <form action="/delete" method="post">
+                                                <input type="hidden" name="messageId" value=<%= message.id %>>
+                                                <button>delete</button>
+                                            </form>
+                                        <% } %>
                                     <% } %>
                                 <% } else { %>
                                     <div>Login to see more message info</div>
@@ -63,6 +67,11 @@
                 </div>
             <% }) %>
         </div>
+        <% if (locals.user) { %>
+            <% if (!user.isadmin) { %>
+                <div>Psst.. Do you want to become an Administrator and gain elevated privileges? click <a href="/admin">here.</a></div>
+            <% } %>
+        <% } %>
     </main>
     <%- include("partials/footer.ejs") %>
 </body>

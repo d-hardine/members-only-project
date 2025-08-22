@@ -11,5 +11,7 @@ membersRouter.get('/logout', membersController.logoutGet)
 membersRouter.get('/new-message', membersController.newMessageGet)
 membersRouter.post('/new-message', membersController.newMessagePost)
 membersRouter.post('/delete', membersController.deleteMessagePost)
+membersRouter.get('/admin', membersController.adminGet)
+membersRouter.post('/admin', membersController.adminPost)
 
 module.exports = membersRouter

@@ -7,6 +7,11 @@ async function getAllMessages() {
     return rows
 }
 
+async function duplicateUsernameSearch(value) {
+    const { rows } = await pool.query("SELECT username FROM users WHERE username = ($1)", [value])
+    return rows[0]
+}
+
 async function registerNewUser(firstname, lastname, username, hashedPassword, boolAdmin) {
     await pool.query("INSERT INTO users (firstname, lastname, username, password, isAdmin) VALUES ($1, $2, $3, $4, $5)",
         [firstname, lastname, username, hashedPassword, boolAdmin]
@@ -23,4 +28,8 @@ async function deleteMessage(messageId) {
     await pool.query('DELETE FROM messages WHERE id = ($1);', [messageId])
 }
 
-module.exports = { getAllMessages, registerNewUser, postNewMessage, deleteMessage }
+async function elevateToAdmin(id) {
+    await pool.query(`UPDATE users SET isadmin = 't' WHERE id = ($1);`, [id])
+}
+
+module.exports = { getAllMessages, duplicateUsernameSearch, registerNewUser, postNewMessage, deleteMessage, elevateToAdmin }
